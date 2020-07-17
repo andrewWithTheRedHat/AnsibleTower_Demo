@@ -1,0 +1,9 @@
+---
+- name: hellow world
+  hosts: nuc2
+
+  tasks:
+
+  - name: put it on the wall
+    shell: wall ansible sees this other host and thats great!
+
