@@ -1,9 +1,7 @@
 ---
-- name: hellow world
+- name: hello world
   hosts: node-2
-
   tasks:
-
-  - name: put it on the wall
-    shell: wall ansible sees this other host and thats great!
+    - name: put it on the wall
+      shell: wall ansible sees this other host and thats great!
 
