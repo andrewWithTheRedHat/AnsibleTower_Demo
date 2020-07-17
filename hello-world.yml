@@ -1,6 +1,6 @@
 ---
 - name: hellow world
-  hosts: nuc2
+  hosts: node-2
 
   tasks:
 
