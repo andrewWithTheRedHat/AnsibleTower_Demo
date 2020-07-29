@@ -2,7 +2,7 @@
 
 - name: set up our server for the demo
   gather_facts: false
-  hosts: node-2
+  hosts: all
   tasks:
 
     - name: install python3

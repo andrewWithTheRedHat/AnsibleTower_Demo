@@ -3,7 +3,7 @@
 
 - name: clean up our server
   gather_facts: false
-  hosts: node-2
+  hosts: all
   tasks:
 
     - name: remove python3
