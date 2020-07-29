@@ -9,7 +9,6 @@
       shell: python3 batAuctions.py
       args: 
         chdir: ~/py-scripts
-      remote_src: yes
 
     - name: validate file was created
       find:
@@ -17,7 +16,6 @@
         age: 10s
         recurse: yes
         patterns: '*-data.json'
-      remote_src: yes
       register: jsonData
 
     - name: move file to correct location
