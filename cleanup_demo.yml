@@ -1,0 +1,27 @@
+---
+#renmove the base for our demo
+
+- name: clean up our server
+  gather_facts: false
+  hosts: localhost
+  tasks:
+
+    - name: remove python3
+      dnf: 
+        name: python3
+        state: absent
+
+    - name: remove httpd
+      dnf: 
+        name: httpd
+        state: absent
+
+    - name: remove nodejs
+      dnf:
+        name: nodejs
+        state: absent
+
+    - name: remove the directory for the app
+      file:
+        path: /tmp/mithril
+        state: absent

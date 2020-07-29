@@ -1,0 +1,36 @@
+---
+#install the base for our demo
+
+- name: set up our server for the demo
+  gather_facts: false
+  hosts: localhost
+  tasks:
+
+    - name: install python3
+      dnf: 
+        name: python3
+        state: present
+
+    - name: install httpd
+      dnf: 
+        name: httpd
+        state: present
+
+    - name: install nodejs
+      dnf:
+        name: nodejs
+        state: present
+
+    - name: install mithril package
+      shell: npm i -g create-mithril-app@latest
+
+    - name: create the directory for the app
+      shell: create-mithril-app /tmp/mithril
+      register: result
+      ignore_errors: yes
+
+    - name: run npm in new directory
+      shell: npm install
+      args:
+        chdir: /tmp/mithril/
+      when: result is succeeded

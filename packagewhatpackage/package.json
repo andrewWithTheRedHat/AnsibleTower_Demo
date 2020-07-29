@@ -1,0 +1,14 @@
+{
+  "name": "packagewhatpackage",
+  "version": "1.0.0",
+  "description": "nerpt",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Scott Simpson",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
