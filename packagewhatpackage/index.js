@@ -1,6 +1,8 @@
-const jsonData = '{"foo":"bar", "gronk": ["fleebles", "sepulveda"]}'
+let data = {}
 
-const pre = document.createElement('pre')
-pre.textContent = JSON.stringify(JSON.parse(jsonData), null, 2)
+m.request({url: './data'})
+.then(res => {data = res})
 
-document.body.appendChild(pre)
+m.mount(document.body, {
+	view: _v => m('pre', JSON.stringify(data, null, 2))
+})
