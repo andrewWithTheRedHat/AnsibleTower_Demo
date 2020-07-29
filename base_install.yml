@@ -26,10 +26,4 @@
         src: ~/packagewhatpackage
         dest: /site
 
-    - name: create symlink for npm service
-      file:
-        src: /site/packagewhatpackage/npmSite.service
-        dest: /etc/systemd/system/
-        state: link
-
         
