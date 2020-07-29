@@ -1,0 +1,28 @@
+import requests
+from bs4 import BeautifulSoup
+import json
+
+URL = 'https://bringatrailer.com'
+page = requests.get(URL)
+
+resultsArr = []
+
+soup = BeautifulSoup(page.content, 'html.parser')
+
+results = soup.findAll('div', class_='bat_announcement')
+
+for elem in results:
+  title = elem.find('h2', class_='post-title')
+  comments = elem.find('div', class_='post-excerpt')
+  if None in (title, comments):
+    continue
+
+#save to json file
+  resultsArr.append(comments)
+
+with open('data.json', 'w') as outfile:
+  json.dump(resultsArr, outfile)
+
+#  print(title.text.strip())
+#  print(comments.text.strip())
+
