@@ -25,5 +25,6 @@
       copy:
         src: ~/packagewhatpackage
         dest: /site
+        remote_src: yes
 
         
