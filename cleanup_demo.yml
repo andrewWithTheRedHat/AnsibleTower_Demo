@@ -3,7 +3,7 @@
 
 - name: clean up our server
   gather_facts: false
-  hosts: localhost
+  hosts: node-2
   tasks:
 
     - name: remove python3
@@ -23,5 +23,5 @@
 
     - name: remove the directory for the app
       file:
-        path: /tmp/mithril
+        path: /site/packagewhatpackage
         state: absent

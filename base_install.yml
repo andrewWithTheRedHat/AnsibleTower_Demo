@@ -1,9 +1,8 @@
 ---
-#install the base for our demo
 
 - name: set up our server for the demo
   gather_facts: false
-  hosts: localhost
+  hosts: node-2
   tasks:
 
     - name: install python3
@@ -11,26 +10,26 @@
         name: python3
         state: present
 
-    - name: install httpd
-      dnf: 
-        name: httpd
-        state: present
-
     - name: install nodejs
       dnf:
         name: nodejs
         state: present
 
-    - name: install mithril package
-      shell: npm i -g create-mithril-app@latest
+    - name: create /site
+      file:
+        path: /site
+        state: directory
+        mode: '0755'
 
-    - name: create the directory for the app
-      shell: create-mithril-app /tmp/mithril
-      register: result
-      ignore_errors: yes
+    - name: copy package to /site
+      copy:
+        src: ~/packagewhatpackage
+        dest: /site
 
-    - name: run npm in new directory
-      shell: npm install
-      args:
-        chdir: /tmp/mithril/
-      when: result is succeeded
+    - name: create symlink for npm service
+      file:
+        src: /site/packagewhatpackage/npmSite.service
+        dest: /etc/systemd/system/
+        state: link
+
+        

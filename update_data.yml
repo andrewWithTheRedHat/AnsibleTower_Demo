@@ -1,0 +1,17 @@
+---
+
+- hosts: node-2
+  gather_facts: false
+
+  tasks:
+    - name: create npm service
+      file:
+        src: ~/site/packagewhatpackage/npmSite.service
+        dest: /etc/systemd/system/
+        state: link
+
+    - name: reload systemd
+      shell: systemctl daemon-reload
+
+    - name: start npm service
+      shell: systemctl start npmSite.service

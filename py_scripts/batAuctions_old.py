@@ -1,13 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import datetime
-
-#create timestamp
-path = '-data.json'
-date = datetime.datetime.now()
-data = str(date) + path
-newdata = "-".join( data.split() )
 
 URL = 'https://bringatrailer.com'
 page = requests.get(URL)
@@ -26,7 +19,8 @@ for elem in results:
 
   #save to json file
   resultsArr.append(rObject)
+  print(resultsArr)
 
-with open(newdata, 'w') as outfile:
+with open('data.json', 'w') as outfile:
   json.dump(resultsArr, outfile)
 

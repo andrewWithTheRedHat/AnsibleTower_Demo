@@ -1,0 +1,25 @@
+---
+
+- hosts: node-2
+  gather_facts: false
+
+  tasks:
+
+    - name: run my python script
+      shell: python3 batAuctions.py
+      args: 
+        chdir: ~/
+
+    - name: validate file was created
+      find:
+        path: ~/py-scripts
+        age: 10s
+        recurse: yes
+        patterns: '*-data.json'
+      register: jsonData
+
+    - name: move file to correct location
+      file:
+        src: jsonData
+        dest: /site/packagewhatpackage
+        mode: '0755'

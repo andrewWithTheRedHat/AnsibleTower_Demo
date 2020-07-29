@@ -1,7 +1,0 @@
----
-
-- name: install redis module
-  hosts: node-2
-  tasks:
-    - name: install redis module
-      shell: dnf module install -y redis

@@ -1,3 +1,3 @@
 npm i
 
-npm serve
+npm start
