@@ -4,9 +4,14 @@
   gather_facts: false
 
   tasks:
+    - name: build npm site - treating it like its the first time
+      shell: npm i
+      args:
+        chgdir: /site/packagewhatpackage
+
     - name: create npm service
       file:
-        src: ~/site/packagewhatpackage/npmSite.service
+        src: /site/packagewhatpackage/npmSite.service
         dest: /etc/systemd/system/
         state: link
 

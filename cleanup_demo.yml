@@ -25,3 +25,14 @@
       file:
         path: /site/packagewhatpackage
         state: absent
+  
+    - name: stop npm service
+      shell: systemctl stop npmSite.service
+
+    - name: remove npm service
+      shell: rm npmSite.service
+      args:
+        chdir: /etc/systemd/system
+
+    - name: reload system services
+      shell: systemctl daemon-reload
