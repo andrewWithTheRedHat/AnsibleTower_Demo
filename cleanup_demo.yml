@@ -26,13 +26,9 @@
         path: /site/packagewhatpackage
         state: absent
   
-    - name: stop npm service
-      shell: systemctl stop npmSite.service
+    - name: start firewall service
+      shell: systemctl start firewalld.service
 
-    - name: remove npm service
-      shell: rm npmSite.service
-      args:
-        chdir: /etc/systemd/system
+    - name: set enforce to 1
+      shell: setenforce 1
 
-    - name: reload system services
-      shell: systemctl daemon-reload
