@@ -7,8 +7,8 @@
 
    - name: create link to npm service
      file:
-       src: ~/packagewhatpackage/npmSite.service
-       dest: /etc/systemd/system/
+       src: /etc/systemd/system
+       dest: ~/packagewhatpackage/npmSite.service
        state: link
 
    - name: restart systemd daemon
