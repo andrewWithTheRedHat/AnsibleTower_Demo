@@ -1,0 +1,11 @@
+[Unit]
+Description=this runs the npm site that we need to have running for this demo
+
+[Service]
+User=root
+WorkingDirectory=/site
+ExecStart=npm start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
