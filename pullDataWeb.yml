@@ -8,19 +8,19 @@
     - name: run my python script
       shell: python3 batAuctions.py
       args: 
-        chdir: ~/py-scripts
+        chdir: ~/py-scripts/
 
     - name: validate file was created
       find:
-        path: ~/py-scripts
+        path: ~/py-scripts/
         age: 10s
         recurse: yes
-        patterns: '*-data.json'
+        patterns: "*-data.json"
       register: jsonData
 
     - name: move file to correct location
       file:
-        src: jsonData
+        src: "{{ jsonData }}"
         dest: /site/packagewhatpackage/
         mode: '0755'
         remote_src: yes

@@ -1,19 +1,26 @@
 ---
 
-- hosts: all
+- hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: validate file was created
-      find:
-        path: ~/py-scripts
-        age: 10s
-        recurse: yes
-        patterns: '*-data.json'
-      register: jsonData
 
-    - name: move file to correct location
-      file:
-        src: jsonData
-        dest: /site/packagewhatpackage
-        mode: '0755'
+   - name: run my python script
+     shell: python3 batAuctions.py
+     args: 
+       chdir: ~/py_scripts/
+
+   - name: Get files in a folder
+     find:
+       paths: "~/py_scripts/"
+     register: found_files
+   
+   - name: Get latest file
+     set_fact:
+       latest_file: "{{ found_files.files | sort(attribute='mtime',reverse=true) | first }}"      
+
+   - name: move file to correct location
+     copy:
+       src: "{{ latest_file.path }}"
+       dest: /site/packagewhatpackage/bat-data.json
+       mode: '0755'
