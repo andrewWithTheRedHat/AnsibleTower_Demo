@@ -5,15 +5,14 @@
 
   tasks:
 
-   - name: create link to npm service
-     file:
-       src: ~/packagewhatpackage/npmSite.service
-       dest: /etc/systemd/system
-       state: link
+   - name: turn off firewall to make sure things are ok
+     shell: systemctl stop firewalld.service
 
-   - name: restart systemd daemon
-     systemd:
-       daemon_reload: yes
+   - name: set enforce to 0
+     shell: setenforce 0
 
-   - name: start npm
-     shell: systemctl start npmSite.service
+#   - name: start the npm service so the site works
+#     shell: npm start
+#     args:
+#       chdir: /site/packagewhatpackage/
+#     poll: 5
