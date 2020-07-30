@@ -24,3 +24,4 @@
        src: "{{ latest_file.path }}"
        dest: /site/packagewhatpackage/bat-data.json
        mode: '0755'
+       remote_src: yes
