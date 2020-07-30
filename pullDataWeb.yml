@@ -1,6 +1,6 @@
 ---
 
-- hosts: localhost
+- hosts: node-2
   gather_facts: false
 
   tasks:
@@ -8,7 +8,7 @@
    - name: run my python script
      shell: python3 batAuctions.py
      args: 
-       chdir: {{ hostname }}/root/py_scripts/
+       chdir: ~/py_scripts/
 
    - name: Get files in a folder
      find:
