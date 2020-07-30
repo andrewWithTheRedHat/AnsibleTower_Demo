@@ -8,7 +8,7 @@
    - name: run my python script
      shell: python3 batAuctions.py
      args: 
-       chdir: ~/py_scripts/
+       chdir: {{ hostname }}/root/py_scripts/
 
    - name: Get files in a folder
      find:
