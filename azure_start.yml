@@ -1,7 +1,7 @@
 ---
 
 #start azure vm
-hosts: all
+hosts: azure_vm
 gather_facts: false
 
 - name: start azure vm
