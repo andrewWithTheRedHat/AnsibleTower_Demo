@@ -1,0 +1,18 @@
+---
+
+hosts: localhost
+gather_facts: no
+
+tasks:
+
+  - name: check for python script
+    stat:
+      path: ~/azure_rm.py
+    register: file
+
+  - name: download python script for inventory
+    shell: wget https://raw.githubusercontent.com/ansible-collections/community.general/master/scripts/inventory/azure_rm.py
+    when: file.stat.exists = False
+
+  - name: change file permissions
+    shell: chmod +x ~/azure_rm.py
