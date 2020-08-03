@@ -4,8 +4,8 @@
 hosts: azure_vm
 gather_facts: false
 
-- name: start azure vm
-  azure_rm_virtualmachine:
-    resource_group: seifertRG
-    name: bp-demo-test
+  - name: start azure vm
+    azure_rm_virtualmachine:
+      resource_group: seifertRG
+      name: bp-demo-test
     
