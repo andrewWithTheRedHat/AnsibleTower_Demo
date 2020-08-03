@@ -4,8 +4,15 @@
 hosts: azure_vm
 gather_facts: false
 
+tasks:
+
+  - name: allocate azure vm
+    azure_rm_virtualmachine:
+      resource_group: seifertRG
+      name: bp-demo-test
+      allocated: yes
+
   - name: start azure vm
     azure_rm_virtualmachine:
       resource_group: seifertRG
       name: bp-demo-test
-    
