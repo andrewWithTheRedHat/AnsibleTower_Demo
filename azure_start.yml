@@ -1,17 +1,17 @@
 ---
 
-#start azure vm
-hosts: all
+- hosts: all
+  gather_facts: false
 
-tasks:
+  tasks:
 
-  - name: allocate azure vm
-    azure_rm_virtualmachine:
-      resource_group: seifertRG
-      name: bp-demo-test
-      allocated: yes
+    - name: allocate azure vm
+      azure_rm_virtualmachine:
+        resource_group: seifertRG
+        name: bp-demo-test
+        allocated: yes
 
-  - name: start azure vm
-    azure_rm_virtualmachine:
-      resource_group: seifertRG
-      name: bp-demo-test
+    - name: start azure vm
+      azure_rm_virtualmachine:
+        resource_group: seifertRG
+        name: bp-demo-test
