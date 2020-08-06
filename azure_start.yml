@@ -2,7 +2,6 @@
 
 #start azure vm
 hosts: all
-gather_facts: false
 
 tasks:
 
