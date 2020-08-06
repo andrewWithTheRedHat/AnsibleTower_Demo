@@ -1,7 +1,7 @@
 ---
 
 #start azure vm
-hosts: azure_vm
+hosts: bp-demo-test
 gather_facts: false
 
 tasks:
