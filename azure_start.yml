@@ -10,8 +10,10 @@
         resource_group: seifertRG
         name: bp-demo-test
         allocated: yes
+      delegate_to: localhost
 
     - name: start azure vm
       azure_rm_virtualmachine:
         resource_group: seifertRG
         name: bp-demo-test
+      delegate_to: localhost
