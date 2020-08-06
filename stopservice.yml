@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: node-2
   gather_facts: false
 
   tasks:
