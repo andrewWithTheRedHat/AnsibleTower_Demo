@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  gather_facts: false
+
+  tasks:
+
+   - name: turn on firewall to make sure things are terrible
+     shell: systemctl start firewalld.service
+
+   - name: set enforce to 0
+     shell: setenforce 0
+
