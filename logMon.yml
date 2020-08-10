@@ -1,0 +1,15 @@
+---
+
+- name: install our ELK stack
+  hosts: node-3
+  gather_facts: false
+
+  tasks:
+
+  - name: check to see if we can ping the internet
+    shell: ping 8.8.8.8
+    result: ping_check
+
+  - name: read ping
+    debug:
+      msg: {{ ping_check }}
