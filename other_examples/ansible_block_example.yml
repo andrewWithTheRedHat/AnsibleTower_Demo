@@ -1,0 +1,38 @@
+---
+
+- name: decide some things
+  hosts: some inventory that includes all the hosts i need to get the decision tree completed
+  
+  tasks:
+
+  - name: call a specific API
+    command: call API
+      args:
+        some_args: foo
+        other_args: bar
+
+  - name: run inline JS or Py to calc variance
+    command: run script
+      args:
+        some_args: thing
+    register: variance_return
+
+  - name: figure out what to do next
+    block:
+      - name: RED ALERT!
+        command: escalate stuff
+
+      - name: other things
+        command: do other thing
+
+      - name: even more things
+        command: other thing
+
+    when: variance_return < 40% (many options here)
+
+  - name: figure out a different thing to do next
+    block:
+      - name: Log Warning
+        command: log a thing
+
+    when: variance_return -ge 20% and -le 39%
